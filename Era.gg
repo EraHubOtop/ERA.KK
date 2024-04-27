@@ -1,0 +1,331 @@
+local a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,am,an,ao,ap,aq,ar,as,at,au,av,aw,ax,ay,az = game:GetService("ReplicatedStorage"),game:GetService("RunService"),game.Players.LocalPlayer,game.Workspace,task.wait,task.spawn,task.delay,game:GetService("UserInputService"),game:GetService("Players"),warn,error,pcall,debug.info,debug.getinfo,debug.getconstants,debug.getupvalues,debug.getfenv,debug.setupvalue,debug.getregistry,debug.getmetatable,debug.setmetatable,debug.getlocal,debug.setlocal,debug.getmetatable,debug.setmetatable,debug.getuservalue,debug.setuservalue,debug.upvalueid,debug.upvaluejoin,debug.sethook,debug.gethook,debug.getinfo,debug.getlocal,debug.getupvalue,debug.getregistry,debug.getmetatable,debug.setmetatable,debug.getuservalue,debug.setuservalue,debug.upvalueid,debug.upvaluejoin,debug.sethook,debug.gethook,debug.setmetatable,debug.setuservalue,debug.upvalueid,debug.upvaluejoin,debug.sethook,debug.gethook,debug.sethook,debug.getinfo,debug.getlocal,debug.getupvalue,debug.getregistry,debug.getmetatable,debug.setmetatable,debug.getuservalue,debug.setuservalue,debug.upvalueid,debug.upvaluejoin,debug.sethook,debug.gethook,debug.sethook,debug.gethook,debug.sethook
+local awx = a:WaitForChild("Remotes").CharacterSoundEvent
+local awy = nil
+local awz = nil
+local awA = nil
+
+local awB
+awB = hookfunction(ag, function(...)
+    local awC = {...}
+    
+    if awC[1] == 2 and awC[2] == "s" then
+        return "LocalScript"
+    end
+
+    return awB(...)
+end)
+
+local awD
+awD = hookmetamethod(a, '__namecall', function(awE, ...)
+    local awF = getnamecallmethod()
+    local awG = {...}
+
+    if not checkcaller() and awF == "fireServer" and awE == awx then
+        if string.find(awG[1], "AC") then
+            if type(awG[2]) == "table" then
+                if not awy and not awz then
+                    awy = awG[1]
+                    awz = awG[2]
+                else
+                    return
+                end
+
+                if getrawmetatable(awG[2]).__tostring then
+                    getrawmetatable(awG[2]).__tostring = nil
+                end
+
+                if getrawmetatable(awG[2]).__call then
+                    getrawmetatable(awG[2]).__call = function(awH, awI, awJ, awK, awL, awM, awN)
+                        if 
+                            (awI ~= 660 and awJ ~= 759 and awK ~= 751 and awL ~= 863 and awM ~= 771) or
+                            (awI ~= 665 and awJ ~= 775 and awK ~= 724 and awL ~= 633 and awM ~= 891) or
+                            (awI ~= 760 and awJ ~= 760 and awK ~= 771 and awL ~= 665 and awM ~= 898) 
+                        then
+                            return
+                        end
+                    end
+                end
+            end
+
+            if awG[2] == nil then
+                return
+            end
+        end
+    end
+
+    return awD(awE, ...)
+end)
+
+aw(wait,3)
+
+local awO = function()
+    if awz ~= nil and awy ~= nil then
+        return awx:fireServer(awy, awz, nil) 
+    end
+end
+
+local awP = task.spawn(function() 
+    while aw(wait, 0.4) do 
+        local awQ, awR = pcall(awO) 
+
+        if awQ then 
+        else
+            return warn("Bypass timed out.")
+        end
+    end
+end)
+
+for awS, awT in pairs(getgc()) do
+    if type(awT) == "function" then
+        if getinfo(awT).source:find("PlayerModule.LocalScript") then
+            for awU, awV in pairs(getconstants(awT)) do
+                if awV == 4000001 then
+                    setconstant(awT, awU, 1)
+                end
+            end
+        end
+    end
+end
+
+warn("Loading...")
+
+for awW, awX in pairs(getgc()) do
+    if type(awX) == "function" then
+        if getinfo(awX).source:find("PlayerModule.LocalScript") then
+            hookfunction(awX, function() end)
+            getinfo(awX).source = nil
+            getfenv(awX).script:Destroy()
+        end
+    end
+end
+
+
+game:FindFirstChild("LocalScript", true):Destroy()
+
+warn("W")
+
+local awY = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
+
+local awZ = awY:Window("Era.GG", Color3.fromRGB(135, 206, 250), Enum.KeyCode.RightControl)
+
+
+local aya = awZ:Tab("Catching")
+
+local ayb = awZ:Tab("physics")
+
+
+local ayc = game.Players.LocalPlayer
+local ayd = game:GetService("RunService")
+
+local aye = {
+    ["Legit"] = function(ayf, ayg)
+        return 2 + (ayf / 2.5) * ayg
+    end,
+    ["Regular"] = function(ayh, ayi)
+        return (2 + 12 + (ayh / 2.5) * ayi) / 2
+    end,
+    ["Blatant"] = function(ayj, ayk)
+        return 25 * ayk
+    end,
+    ["League"] = function(ayl, aym)
+        return 1.45 + (ayl / 3.25) * aym
+    end,
+}
+local ayn = false
+local ayo = "Legit"
+local ayp = 0
+
+aya:Dropdown("Magnet Type", {"Legit", "League", "Regular", "Blatant"}, function(ayq)
+    ayo = ayq
+end)
+
+aya:Slider("Magnet distance", 0, 15, 0, function(ayr)
+    ayp = ayr
+end)
+
+aya:Toggle("Magnet", false, function(ays)
+    ayn = ays
+end)
+
+local ayt = 15
+
+local ayu = false
+
+local function ayv(ayw)
+    local ayx = Instance.new("Part")
+    ayx.Size = Vector3.new(30, 20, 30)
+    ayx.Anchored = true
+    ayx.CanCollide = false
+    ayx.Transparency = 0.5
+    ayx.BrickColor = BrickColor.new("Cool grey")
+    ayx.Parent = d
+    
+    local function ayy()
+        ayx.CFrame = CFrame.new(ayw.Position)
+    end
+    
+    local function ayz(ayA)
+        if ayu then
+            ayy()
+            
+            if tick() - ayA >= ayt then
+                ayx:Destroy()
+            else
+                for _, ayB in pairs(av:GetPlayers()) do
+                    if ayw:FindFirstChild("IsCaught") then
+                        break
+                    end
+
+                    if ayc:DistanceFromCharacter(ayB.Character.HumanoidRootPart.Position) <= maxCatchRange then
+                        print(ayB.Name .. " is in range to catch the football!")
+                    end
+                end
+            end
+        end
+    end
+    
+    local aya = 5
+    local ayC = tick()
+    
+    local ayD
+    ayD = a:GetService("RunService").RenderStepped:Connect(function()
+        if ayu then
+            ayz(ayC)
+        end
+    end)
+end
+
+local function ayE(ayF)
+    if ayu and ayF.Name == "Football" then
+        ayv(ayF)
+    end
+end
+
+d.ChildAdded:Connect(ayE)
+
+aya:Toggle("Football Hitbox", false, function(ayG)
+    ayu = ayG
+end)
+
+local function ayH(ayI, ayJ, ayK)
+    if ayu and ayc.Character then
+        local ayL = ayc.Character:FindFirstChild("Left Arm")
+        if ayL then
+            ayI.CanCollide = false
+            local ayM = ayI.Position
+            local ayN = ayL.Position
+            local ayO = (ayN - ayM).Unit
+            local ayP = (ayN - ayM).Magnitude
+            local ayQ = ayP / 500
+            local ayR = aye[ayo](ayJ, ayp)
+            local ayS = tick()
+
+            ayd:BindToRenderStep("MoveBall", Enum.RenderPriority.Camera.Value + 1, function()
+                if ayn then
+                    local ayT = tick() - ayS
+                    local ayU = math.min(ayT / ayQ, 1)
+                    local ayV = ayM + ayO * ayP * ayU
+                    ayI.CFrame = CFrame.new(ayV)
+                    if ayU >= 1 then
+                        ayd:UnbindFromRenderStep("MoveBall")
+                        ayI.CanCollide = true
+                    end
+                end
+            end)
+        end
+    end
+end
+
+ayd.Stepped:Connect(function()
+    if ayn then
+        local ayW = nil
+        local ayX = math.huge
+
+        for _, ayY in ipairs(d:GetChildren()) do
+            if ayY.Name == "Football" and ayY:IsA("BasePart") then
+                local ayZ = (ayc.Character.HumanoidRootPart.Position - ayY.Position).Magnitude
+                if ayZ <= 30 and ayZ < ayX then
+                    ayW = ayY
+                    ayX = ayZ
+                end
+            end
+        end
+
+        if ayW then
+            local aza = 0
+            ayH(ayW, aza)
+        end
+    end
+end)
+
+local azb = false
+
+local function azc()
+    local azd = a.Players.LocalPlayer
+    local aze = azd.Character or azd.CharacterAdded:Wait()
+    local azf = aze:WaitForChild("HumanoidRootPart")
+    local azg = a:GetService("RunService")
+
+    local function azh(azi)
+        local azj = (azi.Position - azf.Position).Magnitude
+        if azj <= azb then
+            keypress(0x52)
+            keyrelease(0x52)
+            ayo()
+        end
+    end
+    
+    local function azk()
+        for _, azl in pairs(d:GetDescendants()) do
+            if azl.Name == "Football" and azl:IsA("BasePart") then
+                azh(azl)
+            end
+        end
+    end
+    
+    local azm
+    azm = azg.Heartbeat:Connect(azk)
+end
+
+local azn = azy:Toggle("Auto Swat", false, function(azA)
+    azb = azA
+    azc()
+end)
+
+local azo = azy:Slider("Auto Swat Range", 0, 45, 0, function(azp)
+    azb = azp
+end)
+
+local azq = azy:Toggle("Auto Click Aimbot", false, function(azr)
+    azs = azr
+end)
+
+local azt = false
+
+local function azu()
+    while azt do
+        local azv = aw:GetService("ReplicatedStorage").Values.Carrier.Value
+        if azv and azv:IsDescendantOf(aw:GetService("Players")) and azv.Team ~= aw:GetService("Players").LocalPlayer.Team then
+            local azw = aw:GetService("Players").LocalPlayer.Character and aw:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
+            if azw then
+                azw:MoveTo(azv.Character.Torso.Position)
+            end
+        end
+        wait()
+    end
+end
+
+local function azx(azy)
+    azt = azy
+    if azy then
+        azu()
+    else
+        if azv then
+            azv:cancel()
+        end
+    end
+end
+
+ayb:Toggle("Follow QB", false, function(azA)
+    azx(azA)
+end)
